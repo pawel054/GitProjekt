@@ -49,10 +49,5 @@ namespace GitProjekt
             produkty.Remove(produkt);
             AktualizujListe();
         }
-
-        private void lista_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
-        }
     }
 }
