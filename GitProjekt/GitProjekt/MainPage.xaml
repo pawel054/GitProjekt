@@ -12,6 +12,7 @@
         <ListView x:Name="listaProduktow">
         
         </ListView>
+        <Label></Label>
     </Grid>
     
 
