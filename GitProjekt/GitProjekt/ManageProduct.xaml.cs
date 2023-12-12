@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,11 @@ namespace GitProjekt
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ManageProduct : ContentPage
 	{
-		public ManageProduct ()
+        internal ObservableCollection<Produkt> produkty = new ObservableCollection<Produkt>();
+        public ManageProduct(ObservableCollection<Produkt> produkty)
 		{
 			InitializeComponent();
+            this.produkty = produkty;
 		}
 
         public ManageProduct(Produkt wybranyProdukt)

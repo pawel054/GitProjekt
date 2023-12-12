@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GitProjekt.MainPage">
+             x:Class="GitProjekt.MainPage"
+             NavigationPage.HasNavigationBar="False">
 
     <StackLayout Orientation="Vertical">
         <StackLayout BackgroundColor="Black">
@@ -10,22 +11,32 @@
                 <Button Margin="10,0,0,0" BackgroundColor="Crimson" CornerRadius="5" Clicked="Usun_Clicked" Text="Usuń" TextColor="White"  />
                 <Button Margin="10,0,0,0" BackgroundColor="Blue" CornerRadius="5" Clicked="Edytuj_Clicked" Text="Edytuj" TextColor="White" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label FontSize="17" Margin="10,0,0,0" Text="Nazwa" TextColor="White"/>
-                <Label FontSize="17" Margin="100,0,0,0" Text="Cena" TextColor="White" />
-                <Label FontSize="17" Margin="100,0,0,0" Text="Ilość" TextColor="White"/>
-            </StackLayout>
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalTextAlignment="Center" FontSize="17" Margin="0,0,0,0" Text="Nazwa" TextColor="White"/>
+                <Label Grid.Column="1" HorizontalTextAlignment="Center" FontSize="17" Margin="0,0,0,0" Text="Cena" TextColor="White" />
+                <Label Grid.Column="2" HorizontalTextAlignment="Center" FontSize="17" Margin="0,0,0,0" Text="Ilość" TextColor="White"/>
+            </Grid>
         </StackLayout>
         <StackLayout>
             <ListView x:Name="lista" ItemsSource="{Binding Produkt}" SeparatorColor="Black" ItemSelected="lista_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Nazwa}"/>
-                                <Label Text="{Binding Cena, StringFormat='{0:}zł'}"/>
-                                <Label Text="{Binding Ilosc}"/>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Nazwa}" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Cena, StringFormat='{0:}zł'}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Ilosc}" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

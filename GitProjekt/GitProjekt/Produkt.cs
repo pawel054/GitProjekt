@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GitProjekt
 {
-    public class Produt
+    public class Produkt
     {
         public string Nazwa {  get; set; }
 
@@ -12,13 +12,13 @@ namespace GitProjekt
 
         public int Ilosc {  get; set; }
 
-        public Produt(string Nazwa, decimal Cena, int Ilosc)
+        public Produkt(string Nazwa, decimal Cena, int Ilosc)
         {
             this.Nazwa = Nazwa;
             this.Cena = Cena;
             this.Ilosc = Ilosc;
         }
 
-        public Produt() { }
+        public Produkt() { }
     }
 }
