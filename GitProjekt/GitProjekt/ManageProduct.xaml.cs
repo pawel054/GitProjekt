@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace GitProjekt
 	public partial class ManageProduct : ContentPage
 	{
         internal ObservableCollection<Produkt> produkty = new ObservableCollection<Produkt>();
+        private Produkt wybranyProdukt;
+
         public ManageProduct(ObservableCollection<Produkt> produkty)
 		{
 			InitializeComponent();
@@ -26,6 +29,10 @@ namespace GitProjekt
 			labelTytul.Text = "Edytuj produkt";
 			btnDodaj.IsVisible = false;
 			btnEdytuj.IsVisible = true;
+            this.wybranyProdukt = wybranyProdukt;
+            entryNazwa.Text = wybranyProdukt.Nazwa;
+            entryCena.Text = wybranyProdukt.Cena.ToString();
+            entryIlosc.Text = wybranyProdukt.Ilosc.ToString();
         }
 
 		private void BtnDodajClicked(object sender, EventArgs e)
@@ -49,6 +56,8 @@ namespace GitProjekt
 
                     entryIlosc.Text = string.Empty;
 
+                    Navigation.PopAsync();
+
                 }
                 else
                 {
@@ -68,7 +77,19 @@ namespace GitProjekt
             {
                 if (int.TryParse(entryIlosc.Text, out int _) && decimal.TryParse(entryCena.Text, out decimal _))
                 {
+                    wybranyProdukt.Nazwa = entryNazwa.Text;
+                    wybranyProdukt.Cena = decimal.Parse(entryCena.Text);
+                    wybranyProdukt.Ilosc = int.Parse(entryIlosc.Text);
 
+                    entryNazwa.Text = string.Empty;
+                    entryCena.Text = string.Empty;
+                    entryIlosc.Text = string.Empty;
+
+                    Navigation.PopAsync();
+                }
+                else
+                {
+                    DisplayAlert("Niepoprawne dane", "Pole cena lub ilość nie jest liczbą", "OK");
                 }
              }
             else

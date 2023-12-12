@@ -13,15 +13,23 @@ namespace GitProjekt
     {
         private Produkt wybranyProdukt;
         internal ObservableCollection<Produkt> produkty = new ObservableCollection<Produkt>();
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            AktualizujListe();
+        }
         public MainPage()
         {
             InitializeComponent();
+            OnAppearing();
         }
         private void AktualizujListe()
         {
             lista.ItemsSource = null;
             lista.ItemsSource = produkty;
         }
+
         private void Dodaj_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ManageProduct(produkty));
