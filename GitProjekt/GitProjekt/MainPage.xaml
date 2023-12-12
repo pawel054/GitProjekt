@@ -3,17 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GitProjekt.MainPage">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-
-        <ListView x:Name="listaProduktow">
-        
-        </ListView>
-        <Label></Label>
-    </Grid>
-    
-
+    <StackLayout Orientation="Vertical">
+        <StackLayout BackgroundColor="Black">
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,0" HorizontalOptions="Center">
+                <Button Margin="10,0,0,0" BackgroundColor="Green" CornerRadius="5" Clicked="Dodaj_Clicked" Text="Dodaj" TextColor="White" />
+                <Button Margin="10,0,0,0" BackgroundColor="Crimson" CornerRadius="5" Clicked="Usun_Clicked" Text="Usuń" TextColor="White"  />
+                <Button Margin="10,0,0,0" BackgroundColor="Blue" CornerRadius="5" Clicked="Edytuj_Clicked" Text="Edytuj" TextColor="White" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="17" Margin="10,0,0,0" Text="Nazwa" TextColor="White"/>
+                <Label FontSize="17" Margin="100,0,0,0" Text="Cena" TextColor="White" />
+                <Label FontSize="17" Margin="100,0,0,0" Text="Ilość" TextColor="White"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout>
+            <ListView x:Name="lista" ItemsSource="{Binding Produkt}" SeparatorColor="Black" ItemSelected="lista_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Nazwa}"/>
+                                <Label Text="{Binding Cena, StringFormat='{0:}zł'}"/>
+                                <Label Text="{Binding Ilosc}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

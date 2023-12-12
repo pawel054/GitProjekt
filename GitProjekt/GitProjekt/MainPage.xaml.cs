@@ -14,5 +14,25 @@ namespace GitProjekt
         {
             InitializeComponent();
         }
+
+        private void Dodaj_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Edytuj_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Usun_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lista_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+        }
     }
 }
