@@ -10,7 +10,7 @@ namespace GitProjekt
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new ManageProduct();
         }
 
         protected override void OnStart()
