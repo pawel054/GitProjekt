@@ -48,6 +48,7 @@ namespace GitProjekt
             Produkt produkt = (Produkt)lista.SelectedItem;
             produkty.Remove(produkt);
             AktualizujListe();
+
         }
     }
 }
