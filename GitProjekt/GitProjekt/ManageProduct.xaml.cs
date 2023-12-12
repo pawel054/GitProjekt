@@ -17,7 +17,7 @@ namespace GitProjekt
 			InitializeComponent();
 		}
 
-        public ManageProduct(string test)
+        public ManageProduct(Produkt wybranyProdukt)
         {
             InitializeComponent();
 			labelTytul.Text = "Edytuj produkt";
@@ -31,7 +31,21 @@ namespace GitProjekt
 			{
                 if (int.TryParse(entryIlosc.Text, out int _) && decimal.TryParse(entryCena.Text, out decimal _))
                 {
-                    
+                    var produkt = new Produkt()
+                    {
+                        Nazwa = entryNazwa.Text,
+                        Cena = Decimal.Parse(entryCena.Text),
+                        Ilosc = int.Parse(entryIlosc.Text)
+                    };
+
+                    produkty.Add(produkt);
+
+                    entryNazwa.Text = string.Empty;
+
+                    entryCena.Text = string.Empty;
+
+                    entryIlosc.Text = string.Empty;
+
                 }
                 else
                 {
@@ -49,8 +63,11 @@ namespace GitProjekt
         {
             if (!string.IsNullOrEmpty(entryNazwa.Text) && !string.IsNullOrEmpty(entryCena.Text) && !string.IsNullOrEmpty(entryIlosc.Text))
             {
+                if (int.TryParse(entryIlosc.Text, out int _) && decimal.TryParse(entryCena.Text, out decimal _))
+                {
 
-            }
+                }
+             }
             else
             {
                 DisplayAlert("Niepoprawne dane", "Pola nie mogą byc puste", "OK");
